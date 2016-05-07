@@ -16,7 +16,7 @@ var Mixin2 = {
 
 var NewModel = Backbone.Model.extend([{
   initialize: function(){
-
+    this.inherited('initialize', arguments);
   }
 }, Mixin1, Mixin2])
 
