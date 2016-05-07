@@ -19,21 +19,22 @@
 
   var multiExtend = function( /*Array*/ aMixins, /*Object*/ staticProps) {
     var props,
-      nextClass = this,
+      NextClass = this,
       staticProps = staticProps || {};
 
     aMixins = (_.isArray(aMixins) ? aMixins : [aMixins]).slice();
 
     while ((props = aMixins.pop())) {
-      nextClass = oldExtend.call(nextClass, props);
+      NextClass = oldExtend.call(NextClass, props);
     }
 
-    if (nextClass.prototype.inherited === undefined) {
-      nextClass = oldExtend.call(nextClass, InheritedMixin);
+    if (NextClass.prototype.inherited === undefined) {
+      NextClass = oldExtend.call(NextClass, InheritedMixin);
     }
-    // , (!aMixins.length ? staticProps : null)
-    _.assign(nextClass, staticProps);
-    return nextClass;
+
+    _.extend(NextClass, staticProps);
+
+    return NextClass;
   };
 
   _(['Model', 'Collection', 'Router', 'View', 'History']).each(function(className) {

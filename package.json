@@ -1,6 +1,6 @@
 {
   "name": "backbone.multi-extend",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "make Backbone.Class.extend multipl inheriance and super method parents call",
   "main": "backbone.multi-extend.js",
   "directories": {
@@ -34,6 +34,7 @@
     "underscore": "^1.8.3"
   },
   "dependencies": {
+    "backbone": "^1.3.3",
     "backbone.inherited": "0.0.3"
   }
 }
