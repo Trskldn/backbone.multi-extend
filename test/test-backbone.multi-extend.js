@@ -40,7 +40,11 @@ describe('multiExtend', function() {
       results.push('Extended.initialize()');
       return this.inherited('initialize', arguments);
     }
-  }, Mixin1, Mixin2]);
+  }, Mixin1, Mixin2],{
+    staticMethod: function() {
+
+    }
+  });
 
   var extendedClass = new ExtendedClass();
 
@@ -52,4 +56,10 @@ describe('multiExtend', function() {
   it('should pass arguments to super method', function() {
     expect(extendedClass.someOtherMethod()).to.be.equal('Mixin1.someOtherMethod()->Class1.someOtherMethod()')
   });
+
+  it('should have static props staticMethod', function() {
+    expect(ExtendedClass).to.have.property('staticMethod');
+    expect(ExtendedClass.staticMethod).to.be.a('function');
+  });
+
 });
