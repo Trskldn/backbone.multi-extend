@@ -19,14 +19,20 @@
 
   var multiExtend = function( /*Array*/ aMixins, /*Object*/ staticProps) {
     var props,
-      nextClass = this;
+      nextClass = this,
+      staticProps = staticProps || {};
 
     aMixins = (_.isArray(aMixins) ? aMixins : [aMixins]).slice();
 
     while ((props = aMixins.pop())) {
-      nextClass = oldExtend.call(nextClass, props, (!aMixins.length ? staticProps : null));
+      nextClass = oldExtend.call(nextClass, props);
     }
 
+    if (nextClass.prototype.inherited === undefined) {
+      nextClass = oldExtend.call(nextClass, InheritedMixin);
+    }
+    // , (!aMixins.length ? staticProps : null)
+    _.assign(nextClass, staticProps);
     return nextClass;
   };
 
