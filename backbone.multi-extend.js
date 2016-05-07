@@ -25,11 +25,11 @@
     aMixins = (_.isArray(aMixins) ? aMixins : [aMixins]).slice();
 
     while ((props = aMixins.pop())) {
-      NextClass = oldExtend.call(NextClass, props);
+      NextClass = oldExtend.call(NextClass, _.isFunction(props) ? props.prototype : props);
     }
 
     if (NextClass.prototype.inherited === undefined) {
-      NextClass = oldExtend.call(NextClass, InheritedMixin);
+      NextClass.prototype.inherited = InheritedMixin.inherited;
     }
 
     _.extend(NextClass, staticProps);
