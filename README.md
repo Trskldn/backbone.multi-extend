@@ -11,7 +11,6 @@ var Mixin1 = {
 
 var Mixin2 = {
   initialize:function (){
-    this.inherited('initialize', arguments);
   }
 };
 
