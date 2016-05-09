@@ -1,4 +1,3 @@
-;
 (function(root, factory) {
 
   if (typeof define === 'function' && define.amd) {
@@ -19,8 +18,10 @@
 
   var multiExtend = function( /*Array*/ aMixins, /*Object*/ staticProps) {
     var props,
-      NextClass = this,
-      staticProps = staticProps || {};
+      NextClass = this;
+
+
+    staticProps = staticProps || {};
 
     aMixins = (_.isArray(aMixins) ? aMixins : [aMixins]).slice();
 

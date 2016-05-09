@@ -76,6 +76,6 @@ var NewModel = Backbone.Model.extend([{
 
 var newModel = new NewModel();
 // invoke initialize in next order
-NewModel.initialize()-->Mixin1.initialize()-->Mixin2.initialize()-->Mixin3.initialize()-->Backbone.Model.initialize()
+// NewModel.initialize()-->Mixin1.initialize()-->Mixin2.initialize()-->Mixin3.initialize()-->Backbone.Model.initialize()
 
 ```
