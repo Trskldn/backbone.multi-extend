@@ -1,6 +1,6 @@
 {
   "name": "backbone.multi-extend",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "multiple inheritance for Backbone classes, with super method call",
   "main": "backbone.multi-extend.js",
   "directories": {
