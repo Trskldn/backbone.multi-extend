@@ -10,7 +10,7 @@
 
     module.exports = factory(Backbone, _, InheritedMixin);
   } else {
-    root.BackboneInheritedMixin = factory(root.Backbone, root._, root.BackboneInheritedMixin);
+    root.BackboneMultiExtend = factory(root.Backbone, root._, root.BackboneInheritedMixin);
   }
 
 }(this, function(Backbone, _, InheritedMixin) {
