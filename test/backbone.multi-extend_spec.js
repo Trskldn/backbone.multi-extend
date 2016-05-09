@@ -62,10 +62,36 @@ describe('multiExtend', function() {
     expect(ExtendedClass.staticMethod).to.be.a('function');
   });
 
-  it('should work properly,when mixin is Backbone.Model class', function() {
+  it('should handle single inheritance', function() {
     var results = [];
+    var oldInitialize = Backbone.Model.prototype.initialize;
+
+    Backbone.Model.prototype.initialize = function() {
+      results.push('Backbone.Model.initialize');
+    };
+
+    var NewModel = Backbone.Model.extend({
+      initialize: function() {
+        results.push('NewModel.initialize');
+        this.inherited('initialize', arguments);
+      }
+    });
+
+    var newModel = new NewModel();
+    expect(results).to.be.deep.equal(['NewModel.initialize', 'Backbone.Model.initialize']);
+    Backbone.Model.prototype.initialize = oldInitialize;
+  });
+
+  it('should work properly,when Mixin is Backbone.Model class', function() {
+    var results = [];
+    var constructorResults = [];
 
     var Mixin1 = Backbone.Model.extend({
+      constructor: function() {
+        constructorResults.push('Mixin1.constructor');
+        this.inherited('constructor', arguments);
+      },
+
       initialize: function() {
         results.push('Mixin1.initialize');
         this.inherited('initialize', arguments);
@@ -84,6 +110,11 @@ describe('multiExtend', function() {
 
 
     var Mixin3 = Backbone.Model.extend({
+      constructor: function() {
+        constructorResults.push('Mixin3.constructor');
+        this.inherited('constructor', arguments);
+      },
+
       initialize: function() {
         results.push('Mixin3.initialize');
         this.inherited('initialize', arguments);
@@ -94,6 +125,11 @@ describe('multiExtend', function() {
     });
 
     var NewModel = Backbone.Model.extend([{
+      constructor: function() {
+        constructorResults.push('NewModel.constructor');
+        this.inherited('constructor', arguments);
+      },
+
       initialize: function() {
         results.push('NewModel.initialize');
         this.inherited('initialize', arguments);
@@ -103,5 +139,33 @@ describe('multiExtend', function() {
     var newModel = new NewModel();
     expect(newModel).to.have.property('someMethod');
     expect(results).to.be.deep.equal(['NewModel.initialize', 'Mixin1.initialize', 'Mixin2.initialize', 'Mixin3.initialize']);
+    expect(constructorResults).to.be.deep.equal(['NewModel.constructor', 'Mixin1.constructor', 'Mixin3.constructor']);
+  });
+
+  it('should work with Backbone.View', function() {
+    var results = [];
+    var oldInitialize = Backbone.Model.prototype.initialize;
+
+    Backbone.View.prototype.initialize = function() {
+      results.push('Backbone.View.initialize');
+    };
+
+    var Mixin1 = {
+      initialize: function() {
+        results.push('Mixin1.initialize');
+        this.inherited('initialize', arguments);
+      }
+    };
+
+    var NewView = Backbone.View.extend([{
+      initialize: function() {
+        results.push('NewView.initialize');
+        this.inherited('initialize', arguments);
+      }
+    }, Mixin1]);
+
+    var newView = new NewView();
+    expect(results).to.be.deep.equal(['NewView.initialize', 'Mixin1.initialize', 'Backbone.View.initialize']);
+    Backbone.View.prototype.initialize = oldInitialize;
   });
 });
