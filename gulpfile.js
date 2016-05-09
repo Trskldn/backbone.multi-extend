@@ -17,6 +17,7 @@ gulp.task('test', function() {
       read: false
     })
     .pipe(mocha({
+      require: ['./test_helper.js'],
       reporter: 'list'
     }))
     .on('error', gutil.log);

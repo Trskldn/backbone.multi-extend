@@ -1,7 +1,8 @@
 var expect = require('chai').expect;
 var Backbone = require('backbone');
+var _ = require('underscore');
+var $ = require('jquery');
 var multiExtend = require('./../backbone.multi-extend');
-var testHelper = require('./test_helper');
 
 
 describe('multiExtend', function() {
