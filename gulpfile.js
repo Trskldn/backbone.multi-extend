@@ -6,6 +6,7 @@ var rename = require('gulp-rename');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
 var fs = require('fs');
+var runSequence = require('run-sequence');
 
 gulp.task('watch', function() {
   gulp.watch(['gulpfile.js', 'test/*.js', 'backbone.multi-extend.js'], ['test']);
@@ -72,5 +73,18 @@ gulp.task('create-new-tag', function(cb) {
 });
 
 gulp.task('release', ['build'], function(cb) {
+  runSequence(
+    'bump-version',
+    'commit-changes',
+    'push-changes',
+    'create-new-tag',
+    function(error) {
+      if (error) {
+        console.log(error.message);
+      } else {
+        console.log('RELEASE FINISHED SUCCESSFULLY');
+      }
+      cb(error);
+    });
 
 });
