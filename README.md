@@ -13,16 +13,16 @@ multiple inherintance + simple parent overriden method call, next in chains
 
 bower
 ```bash
-bower i --save backbone.multi-extend
+$ bower i --save backbone.multi-extend
 ```
 npm
 ```bash
-npm i --save backbone.multi-extend
+$ npm i --save backbone.multi-extend
 ```
 
 global
 ```bash
-checkout `dist/backbone.multi-extend.min.js`
+$ checkout `dist/backbone.multi-extend.min.js`
 ```
 
 
