@@ -11,34 +11,36 @@ multiple inherintance + simple parent overriden method call, next in chains
 
 ## Instalation
 
-#### bower
-`bower i --save backbone.multi-extend`
+bower
+```bash
+bower i --save backbone.multi-extend
+```
+npm
+```bash
+npm i --save backbone.multi-extend
+```
 
-#### npm
-`npm i --save backbone.multi-extend`
-
-#### global
+global
+```bash
 checkout `dist/backbone.multi-extend.min.js`
-
+```
 
 
 ## Usage
 
-#### CommonJs
+CommonJs
 ```js
 var MultiExtend = require('backbone.multi-extend');
 ```
 
-
-#### RequireJs
-
+RequireJs
 ```js
 require(['backbone.multi-extend'], function(){
 
 });
 ```
 
-#### global
+global
 ```js
 <script src="backbone.js"></script>
 <script src="underscore.js"></script>
@@ -75,7 +77,7 @@ var NewModel = Backbone.Model.extend([{
 }, Mixin1, Mixin2, Mixin3]);
 
 var newModel = new NewModel();
-// invoke initialize in next order
+// invoke initialize method in next order
 // NewModel.initialize()-->Mixin1.initialize()-->Mixin2.initialize()-->Mixin3.initialize()-->Backbone.Model.initialize()
 
 ```
