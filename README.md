@@ -21,9 +21,7 @@ $ npm i --save backbone.multi-extend
 ```
 
 global
-```bash
-$ checkout `dist/backbone.multi-extend.min.js`
-```
+just  checkout `backbone.multi-extend.min.js` from this repo
 
 
 ## Usage
