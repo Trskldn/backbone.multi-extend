@@ -1,6 +1,6 @@
 {
   "name": "backbone.multi-extend",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "multiple inheritance for Backbone classes, with super method call",
   "main": "backbone.multi-extend.js",
   "directories": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "gulp test",
-    "test:watch": "gulp watch"
+    "test:watch": "gulp watch",
+    "postinstall": "bower install"    
   },
   "repository": {
     "type": "git",
