@@ -15,6 +15,7 @@ $ npm i --save backbone.multi-extend
 ```
 
 global
+
 just  checkout `backbone.multi-extend.min.js` from this repo
 
 
@@ -25,7 +26,7 @@ CommonJs
 var MultiExtend = require('backbone.multi-extend');
 ```
 
-RequireJs
+AMD
 ```js
 require(['backbone.multi-extend'], function(){
 
