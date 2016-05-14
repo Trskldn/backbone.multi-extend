@@ -3,12 +3,6 @@
 
 multiple inheritance,with super method call, for Backbone classes
 
-## Motivation
-By default, Backbone classes support only single inheritance without explicit
-parents overrriden method call. Backbone.multi-extend, extend backobne extend to handle
-multiple inherintance + simple parent overriden method call, next in chains
-
-
 ## Instalation
 
 bower
