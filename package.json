@@ -9,7 +9,7 @@
   "scripts": {
     "test": "gulp test",
     "test:watch": "gulp watch",
-    "postinstall": "bower install"    
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/Trskldn/backbone.multi-extend#readme",
   "devDependencies": {
+    "bower": "^1.7.9",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.1.0",
